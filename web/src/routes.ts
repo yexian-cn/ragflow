@@ -94,6 +94,12 @@ const routes = [
       {
         path: '/retrievability',
         component: '@/pages/retrievability',
+        routes: [
+          {
+            path: '/retrievability/testing',
+            component: '@/pages/add-knowledge/components/knowledge-testing',
+          },
+        ],
       },
     ],
   },
