@@ -28,7 +28,7 @@ const RagHeader = () => {
       { path: '/knowledge', name: t('knowledgeBase'), icon: KnowledgeBaseIcon },
       { path: '/chat', name: t('chat'), icon: MessageOutlined },
       { path: '/retrievability', name: t('retrievability'), icon: KnowledgeBaseIcon },
-      {/* { path: '/flow', name: t('flow'), icon: GraphIcon }, */}
+      /* { path: '/flow', name: t('flow'), icon: GraphIcon }, */
       { path: '/file', name: t('fileManager'), icon: FileIcon },
     ],
     [t],
