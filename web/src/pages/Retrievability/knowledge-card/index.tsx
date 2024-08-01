@@ -29,7 +29,7 @@ const KnowledgeCard = ({ item }: IProps) => {
   };
 
   const handleCardClick = () => {
-    navigate(`/knowledge/${KnowledgeRouteKey.Dataset}?id=${item.id}`, {
+    navigate(`/knowledge/${KnowledgeRouteKey.Testing}?id=${item.id}`, {
       state: { from: 'list' },
     });
   };
