@@ -58,6 +58,7 @@ export default {
       logout: '登出',
       fileManager: '文件管理',
       flow: '图',
+      retrievability: '检索',
     },
     knowledgeList: {
       welcome: '欢迎回来',
