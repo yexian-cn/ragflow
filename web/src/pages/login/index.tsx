@@ -182,8 +182,8 @@ const Login = () => {
           </Form>
         </div>
       </div>
-      <div className={styles.loginRight}>
-        <RightPanel></RightPanel>
+      <div className={styles.loginRight} style={{ backgroundColor: '#ffffff' }}>
+        {/* <RightPanel></RightPanel> */}
       </div>
     </div>
   );
