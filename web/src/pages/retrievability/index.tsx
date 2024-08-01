@@ -79,5 +79,5 @@ const KnowledgeList = () => {
   );
 };
 
-// export default KnowledgeList;
-export default Retrievability;
+export default KnowledgeList;
+// export default Retrievability;
