@@ -94,7 +94,29 @@ const routes = [
       {
         path: '/retrievability',
         component: '@/pages/retrievability',
+      },
+      {
+        path: '/retrievability',
+        component: '@/pages/add-knowledge',
         routes: [
+          {
+            path: '/retrievability/dataset',
+            component: '@/pages/add-knowledge/components/knowledge-dataset',
+            routes: [
+              {
+                path: '/retrievability/dataset',
+                component: '@/pages/add-knowledge/components/knowledge-file',
+              },
+              {
+                path: '/retrievability/dataset/chunk',
+                component: '@/pages/add-knowledge/components/knowledge-chunk',
+              },
+            ],
+          },
+          {
+            path: '/retrievability/configuration',
+            component: '@/pages/add-knowledge/components/knowledge-setting',
+          },
           {
             path: '/retrievability/testing',
             component: '@/pages/add-knowledge/components/knowledge-testing',
