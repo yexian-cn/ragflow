@@ -91,6 +91,10 @@ const routes = [
         path: '/flow/:id',
         component: '@/pages/flow',
       },
+      {
+        path: '/retrievability',
+        component: '@/pages/retrievability',
+      },
     ],
   },
   {
