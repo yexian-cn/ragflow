@@ -1,3 +1,4 @@
+import { useLocation } from 'umi'; // 或者从 'react-router-dom' 导入
 import { ReactComponent as ConfigurationIcon } from '@/assets/svg/knowledge-configration.svg';
 import { ReactComponent as DatasetIcon } from '@/assets/svg/knowledge-dataset.svg';
 import { ReactComponent as TestingIcon } from '@/assets/svg/knowledge-testing.svg';
@@ -18,6 +19,10 @@ import styles from './index.less';
 
 const KnowledgeSidebar = () => {
   let navigate = useNavigate();
+  const location = useLocation(); // 获取当前路由位置
+  const isInRetrievability = location.pathname.includes('/retrievability'); // 检查路径中是否包含 '/retrievability'
+  const isInKnowledge = location.pathname.includes('/knowledge'); // 检查路径中是否包含 '/knowledge'
+  
   const activeKey = useSecondPathName();
   const { knowledgeId } = useGetKnowledgeSearchParams();
 
@@ -54,24 +59,36 @@ const KnowledgeSidebar = () => {
   );
 
   const items: MenuItem[] = useMemo(() => {
-    return [
-      getItem(
-        KnowledgeRouteKey.Dataset, // TODO: Change icon color when selected
-        KnowledgeRouteKey.Dataset,
-        <DatasetIcon />,
-      ),
-      getItem(
-        KnowledgeRouteKey.Testing,
-        KnowledgeRouteKey.Testing,
-        <TestingIcon />,
-      ),
-      getItem(
-        KnowledgeRouteKey.Configuration,
-        KnowledgeRouteKey.Configuration,
-        <ConfigurationIcon />,
-      ),
-    ];
-  }, [getItem]);
+    let menuItems = [];
+
+    // 只在非 /knowledge 路径下显示 Testing 菜单项
+    if (!isInKnowledge) {
+      menuItems.push(
+        getItem(
+          KnowledgeRouteKey.Testing,
+          KnowledgeRouteKey.Testing,
+          <TestingIcon />,
+        ),
+      );
+    }
+
+    if (!isInRetrievability) {
+      menuItems.unshift(
+        getItem(
+          KnowledgeRouteKey.Dataset,
+          KnowledgeRouteKey.Dataset,
+          <DatasetIcon />,
+        ),
+        getItem(
+          KnowledgeRouteKey.Configuration,
+          KnowledgeRouteKey.Configuration,
+          <ConfigurationIcon />,
+        ),
+      );
+    }
+
+    return menuItems;
+  }, [getItem, isInRetrievability, isInKnowledge]);
 
   useEffect(() => {
     if (windowWidth.width > 957) {
