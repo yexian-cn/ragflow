@@ -71,7 +71,7 @@ export default {
     },
     knowledgeDetails: {
       dataset: '数据集',
-      testing: '检索测试',
+      testing: '检索',
       configuration: '配置',
       files: '文件',
       name: '名称',
@@ -93,16 +93,16 @@ export default {
       processBeginAt: '流程开始于',
       processDuration: '过程持续时间',
       progressMsg: '进度消息',
-      testingDescription: '最后一步！ 成功后，剩下的就交给Infiniflow AI吧。',
+      testingDescription: '调整下列参数，获取精准信息。',
       similarityThreshold: '相似度阈值',
       similarityThresholdTip:
         '我们使用混合相似度得分来评估两行文本之间的距离。 它是加权关键词相似度和向量余弦相似度。 如果查询和块之间的相似度小于此阈值，则该块将被过滤掉。',
       vectorSimilarityWeight: '关键字相似度权重',
       vectorSimilarityWeightTip:
         '我们使用混合相似性评分来评估两行文本之间的距离。它是加权关键字相似性和矢量余弦相似性或rerank得分（0〜1）。两个权重的总和为1.0。',
-      testText: '测试文本',
+      testText: '检索内容',
       testTextPlaceholder: '请输入您的问题！',
-      testingLabel: '测试',
+      testingLabel: '检索',
       similarity: '混合相似度',
       termSimilarity: '关键词相似度',
       vectorSimilarity: '向量相似度',
