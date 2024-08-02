@@ -138,6 +138,11 @@ def chat(dialog, messages, stream=True, **kwargs):
     else:
         if prompt_config.get("keyword", False):
             questions[-1] += keyword_extraction(chat_mdl, questions[-1])
+        chat_logger.info(f"Calling retrieval with params: questions={questions}, 
+            embedding_model={embd_mdl}, tenant_id={dialog.tenant_id}, kb_ids={dialog.kb_ids}, 
+            top_n={dialog.top_n}, similarity_threshold={dialog.similarity_threshold}, 
+            vector_similarity_weight={dialog.vector_similarity_weight}, doc_ids={kwargs.get('doc_ids')}, 
+            top_k={dialog.top_k}, aggs=False, rerank_model={rerank_mdl}")
         kbinfos = retrievaler.retrieval(" ".join(questions), embd_mdl, dialog.tenant_id, dialog.kb_ids, 1, dialog.top_n,
                                         dialog.similarity_threshold,
                                         dialog.vector_similarity_weight,
@@ -147,6 +152,11 @@ def chat(dialog, messages, stream=True, **kwargs):
     #self-rag
     if dialog.prompt_config.get("self_rag") and not relevant(dialog.tenant_id, dialog.llm_id, questions[-1], knowledges):
         questions[-1] = rewrite(dialog.tenant_id, dialog.llm_id, questions[-1])
+        chat_logger.info(f"Calling retrieval with params: questions={questions}, 
+            embedding_model={embd_mdl}, tenant_id={dialog.tenant_id}, kb_ids={dialog.kb_ids}, 
+            top_n={dialog.top_n}, similarity_threshold={dialog.similarity_threshold}, 
+            vector_similarity_weight={dialog.vector_similarity_weight}, doc_ids={kwargs.get('doc_ids')}, 
+            top_k={dialog.top_k}, aggs=False, rerank_model={rerank_mdl}")
         kbinfos = retrievaler.retrieval(" ".join(questions), embd_mdl, dialog.tenant_id, dialog.kb_ids, 1, dialog.top_n,
                                         dialog.similarity_threshold,
                                         dialog.vector_similarity_weight,
