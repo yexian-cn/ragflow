@@ -31,6 +31,7 @@ stat_logger = getLogger("stat")
 access_logger = getLogger("access")
 database_logger = getLogger("database")
 chat_logger = getLogger("chat")
+chat_logger.setLevel(20)
 
 from rag.utils.es_conn import ELASTICSEARCH
 from rag.nlp import search
